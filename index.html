@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Clear Text field Buttons</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://scottaohara.github.io/a11y_styled_form_controls/src/assets/css/--demo-only--.css">
+    <link rel="stylesheet" href="https://scottaohara.github.io/a11y_styled_form_controls/src/assets/css/--shared--.css">
+    <link rel="stylesheet" href="assets/css/clear-textfield.css">
+  </head>
+  <body id="body">
+    <div id="page" class="demo-wrap">
+      <main>
+        <div class="demo">
+          <div class="demo-wrap__header">
+            <h1 style="margin-top: 0;">
+              Clear Text field Buttons
+            </h1>
+            <p>Published: <span>February 19, 2022</span></p>
+            <div>
+              <a href="https://github.com/scottaohara/aria_buttons">See source on GitHub</a>
+            </div>
+          </div>
+
+          <section>
+            <h2>
+              Pattern Demos
+            </h2>
+            <p>The following examples are different ways to markup a text field and provide it a button to clear a user's entry.</p>
+
+            <div>
+              <h3>Label containing text field</h3>
+              <p>
+                <custom-clear>
+                  <label>
+                    Example 1
+                    <input>
+                  </label>
+                </custom-clear>
+              </p>
+            </div>
+            <div>
+              <h3>Label prior to text field</h3>
+              <label for=ex2>
+                Example 2
+              </label>
+              <div>
+                <custom-clear>
+                  <input id=ex2>
+                </custom-clear>
+              </div>
+            </div>
+            <h3>Right to left example</h3>
+            <p>
+              <custom-clear dir=rtl>
+                <label>
+                  Example 3
+                  <input>
+                </label>
+              </custom-clear>
+            </p>
+            <div>
+              <h3>Readonly Field</h3>
+              <label for=ex4>
+                Example 4
+              </label>
+              <div>
+                <custom-clear>
+                  <input id=ex4 readonly value="foo">
+                </custom-clear>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>
+              Pattern Details
+            </h2>
+
+            <details>
+              <summary>Pattern Markup</summary>
+              <pre><code>&lt;label for=ex4>
+  Name
+&lt;/label>
+&lt;div>
+  &lt;custom-clear>
+    &lt;input id=whatever>
+  &lt;/custom-clear>
+&lt;/div></code></pre>
+            </details>
+            <p>
+              The <code>&lt;custom-clear></code> custom element serves as a wrapper for where the clear button will be injected.  It must have the <code>&lt;input></code> as a descendant.
+            </p>
+            <p>
+              The <code>&lt;custom-clear></code> should not be a child of the <code>&lt;label></code> element. Doing so will cause the clear button's accessible name to be recognized by the <code>&lt;label></code> element, and thus become part of the text field's accessible name when the button is not in the hidden state.
+            </p>
+            <p>
+              The clear button will be visually positioned at the end of the text field.  The text field has a padding set (to the left or right side, depending on the left to right or right to left directionality of the page), where the positioned clear button can safely exist without overlapping content.
+            </p>
+            <p>
+              The clear button will appear on focus or hover of a text field so long as the text field has a non-empty value. On focus leaving or mouseout, the clear button will become hidden again.
+            </p>
+            <p>
+              Clicking or tapping the button will result in it being set to the hidden state, the text field's value becoming the empty string, and focus being placed into the text field.
+            </p>
+            <p>
+              The clear button is provided a <code>role=button</code> and a <code>tabindex=-1</code> so that if users of assistive technologies, such as screen readers, were to discover it, it would be exposed with a proper role and respond to synthetic click events. The clear button has a default accessible name of "clear entry".
+            </p>
+            <p>
+              The clear button is purposefully not in the tabbing order of the web page. Keyboard users can use the <kbd>Delete</kbd> or <kbd>Backspace</kbd> keys (or first select all the text field's text and then use these keys) to delete the contents of the text field.
+            </p>
+            <p>
+              If the clear button was part of the web page's tabbing order, every text field that a user had filled out to their satisfaction would then require that they tab past the clear button that they have no use for.  Adding clear buttons to the web page's tabbing order is not recommended for this reason, as it has the potential to require two keyboard focus stops for every text field on the page.
+            </p>
+            <p>
+              Text fields that are in a disabled or readonly state do not display a clear button on hover or focus (if focus is allowed).
+            </p>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="index.js"></script>
+    <script>
+      const els = document.querySelectorAll('custom-clear');
+      for ( let i = 0; i < els.length; i++ ) {
+        customClear(els[i])
+      }
+    </script>
+  </body>
+</html>

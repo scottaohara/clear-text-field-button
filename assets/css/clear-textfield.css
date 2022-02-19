@@ -1,0 +1,44 @@
+custom-clear {
+  display: inline-block;
+  position: relative;
+}
+
+custom-clear input {
+  padding: .25em;
+  padding-right: 1.5em;
+}
+
+[dir=rtl] input {
+  padding-left: 1.5em;
+  padding-right: .25em;
+}
+
+.clr-btn {
+  background: none;
+  border: 0;
+  border-left: 1px solid #ccc;
+  bottom: 0;
+  cursor: default;
+  font-weight: bold;
+  line-height: 1.1;
+  padding: .5em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+[dir=rtl] .clr-btn {
+  border-right: 1px solid #ccc;
+  left: 0;
+  right: auto;
+}
+
+.clr-btn:hover {
+  background: blue;
+  color: #fff;
+}
+
+.clr-btn:active {
+  background: darkblue;
+}
