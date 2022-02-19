@@ -42,3 +42,7 @@ custom-clear input {
 .clr-btn:active {
   background: darkblue;
 }
+
+@media screen and (prefers-color-scheme: dark) {
+  /* add your own darkmode styles here */
+}
