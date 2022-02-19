@@ -3,7 +3,7 @@
  *
  * Author: Scott O'Hara
  * Version: 1.0.0
- * License: 
+ * License: https://github.com/scottaohara/clear-text-field-button/blob/main/LICENSE
  */
 
 const customClearOptions = {
