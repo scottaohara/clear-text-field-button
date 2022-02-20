@@ -88,23 +88,45 @@
   &lt;/custom-clear>
 &lt;/div></code></pre>
             </details>
+            
+            <details>
+              <summary>Pattern Markup after the script runs</summary>
+              <pre><code>&lt;label for=whatever>
+  Name
+&lt;/label>
+&lt;div>
+  &lt;custom-clear>
+    &lt;input id=whatever>
+    &lt;span class="clr-btn" role="button" aria-label="clear entry" tabindex="-1" hidden>
+      &lt;span aria-hidden="true">×&lt;/span>
+    &lt;/span>
+  &lt;/custom-clear>
+&lt;/div></code></pre>
+            </details>
             <p>
-              The <code>&lt;custom-clear></code> custom element serves as a wrapper for where the clear button will be injected.  It must have the <code>&lt;input></code> as a descendant.
+              The <code>&lt;custom-clear></code> custom element serves as a wrapper for where the clear button will be injected.  
+              It must have the <code>&lt;input></code> as a descendant.
             </p>
             <p>
-              The <code>&lt;custom-clear></code> should not be a child of the <code>&lt;label></code> element. Doing so will cause the clear button's accessible name to be recognized by the <code>&lt;label></code> element, and thus become part of the text field's accessible name when the button is not in the hidden state.
+              The <code>&lt;custom-clear></code> should not be a child of the <code>&lt;label></code> element. 
+              Doing so will cause the clear button's accessible name to be recognized by the <code>&lt;label></code> element, 
+              and thus become part of the text field's accessible name when the button is not in the hidden state.
             </p>
             <p>
-              The clear button will be visually positioned at the end of the text field.  The text field has a padding set (to the left or right side, depending on the left to right or right to left directionality of the page), where the positioned clear button can safely exist without overlapping content.
+              The clear button will be visually positioned at the end of the text field.  The text field has extra padding set 
+              (to the left or right side, depending on the left to right or right to left directionality of the page), 
+              where the positioned clear button can safely exist without overlapping content.
             </p>
             <p>
-              The clear button will appear on focus or hover of a text field so long as the text field has a non-empty value. On focus leaving or mouseout, the clear button will become hidden again.
+              The clear button will appear on focus or hover of a text field so long as the text field has a non-empty value. 
+              On focus leaving or mouseout, the clear button will become hidden again.
             </p>
             <p>
-              Clicking or tapping the button will result in it being set to the hidden state, the text field's value becoming the empty string, and focus being placed into the text field.
+              Clicking or tapping the button will result in it being set to the hidden state, the text field's value becoming 
+              the empty string, and focus being placed into the text field.
             </p>
             <p>
-              The clear button is provided a <code>role=button</code> and a <code>tabindex=-1</code> so that if users of assistive technologies, such as screen readers, were to discover it, it would be exposed with a proper role and respond to synthetic click events. The clear button has a default accessible name of "clear entry".
+              The clear button is marked up as a <code>&lt;button></code> element with a <code>tabindex=-1</code> and has an accessible name of "clear entry". This way if users of assistive technologies, such as screen readers, were to discover it, it would be exposed with a proper role and respond click or keypress events.  <strong>Note:</strong> I originally was using a <code>&lt;span></code> with a <code>role=button</code>. However, Narrator was not properly activating the button when it had been navigated to in scan mode and <kbd>Enter</kbd> or <kbd>Space</kbd> were pressed. Other screen readers were working just fine with respecting synthetic clicks on the element.
             </p>
             <p>
               The clear button is purposefully not in the tabbing order of the web page. Keyboard users can use the <kbd>Delete</kbd> or <kbd>Backspace</kbd> keys (or first select all the text field's text and then use these keys) to delete the contents of the text field.
