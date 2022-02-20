@@ -2,7 +2,7 @@
  * Custom Textfield clear buttons
  *
  * Author: Scott O'Hara
- * Version: 1.0.0
+ * Version: 1.0.1
  * License: https://github.com/scottaohara/clear-text-field-button/blob/main/LICENSE
  */
 
@@ -31,9 +31,9 @@ const customClear = function ( inst, options ) {
 
 
   const setupBtn = () => {
-    const makeBtn = document.createElement('span');
+    const makeBtn = document.createElement('button');
     makeBtn.classList.add(_options.cssClass);
-    makeBtn.setAttribute('role', 'button');
+    makeBtn.type = 'button';
     makeBtn.setAttribute('aria-label', _options.accName);
     makeBtn.tabIndex = -1;
     makeBtn.innerHTML = '<span aria-hidden=true>&times;</span>';
