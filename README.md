@@ -4,14 +4,14 @@
 
 ## Required Markup
 
-The most minimal required markup for this pattern is as follows:
+The minimal required markup for this pattern:
 ```html
 <custom-clear>
   <input>
 </custom-clear>
 ```
 
-Though you're going to want to provide more information than that.
+But let's be serious, you'll need to provide more information than that, and will often want your label to be positioned 'on top' of your text field.
 
 ```html
 <label for=ex>Example</label>
@@ -22,7 +22,7 @@ Though you're going to want to provide more information than that.
 </div>
 ```
 
-Once the script runs, a clear button will be added as a sibling to the `<input>` element:
+Once the script runs, a clear button will be generated and added as a sibling to the `<input>` element:
 ```html
 <span class="clr-btn" role="button" aria-label="clear entry" tabindex="-1" hidden>
   <span aria-hidden="true">×</span>
