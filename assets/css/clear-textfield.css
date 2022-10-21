@@ -4,8 +4,7 @@ custom-clear {
 }
 
 custom-clear input {
-  padding: .25em;
-  padding-right: 1.5em;
+  padding: .25em 1.5em .25em .25em;
 }
 
 [dir=rtl] input {
